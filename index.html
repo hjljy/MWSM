@@ -60,40 +60,61 @@
                         </el-tabs>
                     </div>
 
-                    <div style="max-width: 900px;margin-top: 20px;margin-bottom: 0px;margin-left: auto;margin-right: auto;">
-                        <el-row :gutter="20">
-                            <el-col :span="24" :xs="24">
-                                <el-card class="box-card">
-                                    <div slot="header" class="clearfix">
-                                        <span>常逛网站</span>
-                                        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
-                                    </div>
-                                    <div v-for="(web,index) in webList" :key="index" class="text item">
-                                        <el-col :span="4" :xs="12">
+                    <div
+                        style="max-width: 900px;margin-top: 20px;margin-bottom: 0px;margin-left: auto;margin-right: auto;">
+
+                    
+                            <el-card class="box-card">
+                                <div slot="header" class="clearfix">
+                                    <span>常逛网站</span>
+                                    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                                </div>
+                                <el-row :gutter="20" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index" class="text item">
+                                    <el-col v-if="web.normol==1" :span="6" :xs="12">
                                         <el-link :href="web.url" target="_blank">
                                             <div>
-                                                <el-image style="width: 40px; height: 40px" :src="web.image">
-                                                </el-image>
-                                                <span style="text-align: center;">{{web.name}}</span> 
+                                                <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 10px;font-size: large;"> {{web.name}}</span>
                                             </div>
-                                          
                                             <div>
-                                                <span >{{ web.desc }}</span>
+                                                <span>{{ web.desc }}</span>
                                             </div>
                                         </el-link>
-                                          
                                     </el-col>
-                                        
+                                </div>
+                                </el-row>
+                            </el-card>
+                            <div style="height: 20px;"></div>
+                            <el-card class="box-card" style="margin-bottom: 20px;">
+                                <div slot="header" class="clearfix">
+                                    <span>社区博客</span>
+                                    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                                </div>
+                                <el-row :gutter="20" style="margin-bottom: 20px;">
+                                    <div v-for="(web,index) in webList" :key="index" class="item">
+                                        <el-col v-if="web.type==1" :span="6" :xs="12">
+                                            <el-link :href="web.url" target="_blank">
+                                                <div>
+                                                    <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                        :src="web.image">
+                                                    </img>
+                                                    <span style="margin: 5px 10px;font-size: large;">
+                                                        {{web.name}}</span>
+                                                </div>
+                                                <div>
+                                                    <span>{{ web.desc }}</span>
+                                                </div>
+                                            </el-link>
+                                        </el-col>
+                                        </el-rpw>
                                     </div>
-                                </el-card>
-                            </el-col>
-                        </el-row>
+                            </el-card>
+                        </el-col>
+
                     </div>
-
-
-
-
-
                 </el-main>
                 <el-footer>Footer</el-footer>
             </el-container>
@@ -256,43 +277,57 @@
                         name: "链滴",
                         url: "https://www.ld246.com/",
                         image: "https://static.ld246.com/images/favicon.png",
-                        desc: "记录生活,链接点滴"
+                        desc: "SOLO博客社区,记录生活,链接点滴",
+                        normol: 1,
+                        type: 1
+                    },
+                    {
+                        name: "B乎",
+                        url: "https://www.zhihu.com/",
+                        image: "https://static.zhihu.com/static/favicon.ico",
+                        desc: "装逼如风，常伴吾身，且看且珍惜",
+                        normol: 1,
+                        type: 2
+                    },
+                    {
+                        name: "今日热榜",
+                        url: "https://tophub.today/",
+                        image: "https://file.ipadown.com/tophub/assets/images/logo.png",
+                        desc: "今日热榜，追踪全网热点！",
+                        normol: 1,
+                        type: 2
+                    },
+                    {
+                        name: "V2EX",
+                        url: "https://www.v2ex.com/",
+                        image: "https://www.v2ex.com/static/img/icon_rayps_64.png",
+                        desc: "V2EX 是一个关于分享和探索的地方",
+                        normol: 1,
+                        type: 1
                     },
                     {
                         name: "链滴",
                         url: "https://www.ld246.com/",
                         image: "https://static.ld246.com/images/favicon.png",
-                        desc: "记录生活的地方"
+                        desc: "一个记录生活的地方asfasfsaafasfasfasdas",
+                        normol: 0,
+                        type: 1
                     },
                     {
                         name: "链滴",
                         url: "https://www.ld246.com/",
                         image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方"
+                        desc: "一个记录生活的地方afasfasfasfa",
+                        normol: 0,
+                        type: 1
                     },
                     {
                         name: "链滴",
                         url: "https://www.ld246.com/",
                         image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方"
-                    },
-                    {
-                        name: "链滴",
-                        url: "https://www.ld246.com/",
-                        image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方"
-                    },
-                    {
-                        name: "链滴",
-                        url: "https://www.ld246.com/",
-                        image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方"
-                    },
-                    {
-                        name: "链滴",
-                        url: "https://www.ld246.com/",
-                        image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方"
+                        desc: "一个记录生活的地方ssafs",
+                        normol: 0,
+                        type: 1
                     }
                 ]
             },
