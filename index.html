@@ -29,7 +29,7 @@
 
                     </div>
                     <div>
-                        <el-tabs v-model="activeName" style="max-width: 900px;margin: 0 auto;">
+                        <el-tabs v-model="activeName" style="max-width: 1200px;margin: 0 auto;">
                             <el-tab-pane label="百度" name="first">
                                 <el-input placeholder="百度一下，你就知道" v-model="keywords" border-radius="0px">
                                     <el-button slot="append" icon="el-icon-search" @click="searchWords('1')">
@@ -61,64 +61,88 @@
                     </div>
 
                     <div
-                        style="max-width: 900px;margin-top: 20px;margin-bottom: 0px;margin-left: auto;margin-right: auto;">
+                        style="max-width: 1200px;margin-top: 20px;margin-bottom: 0px;margin-left: auto;margin-right: auto;">
 
-                    
-                            <el-card class="box-card">
-                                <div slot="header" class="clearfix">
-                                    <span>常逛网站</span>
-                                    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
-                                </div>
-                                <el-row :gutter="20" style="margin-bottom: 20px;">
-                                <div v-for="(web,index) in webList" :key="index" class="text item">
-                                    <el-col v-if="web.normol==1" :span="6" :xs="12">
-                                        <el-link :href="web.url" target="_blank">
-                                            <div>
+
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>常逛网站</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-row :gutter="20"  class="item" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index">
+                                    <el-col v-if="web.normol==1" :span="4" :xs="12" class="bg" style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
                                                 <img style="width: 30px; height: 30px;border-radius: 100%;"
                                                     :src="web.image">
                                                 </img>
-                                                <span style="margin: 5px 10px;font-size: large;"> {{web.name}}</span>
+                                                <span style="margin: 5px 10px;font-size: large;display: block;"> {{web.name}}</span>
                                             </div>
                                             <div>
-                                                <span>{{ web.desc }}</span>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
                                             </div>
                                         </el-link>
                                     </el-col>
                                 </div>
-                                </el-row>
-                            </el-card>
-                            <div style="height: 20px;"></div>
-                            <el-card class="box-card" style="margin-bottom: 20px;">
-                                <div slot="header" class="clearfix">
-                                    <span>社区博客</span>
-                                    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </el-row>
+                        </el-card>
+                        <div style="height: 20px;"></div>
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>社区交流</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-row :gutter="20"  class="item" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index">
+                                    <el-col v-if="web.type==1" :span="4" :xs="12" class="bg" style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 10px;font-size: large;display: block;"> {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
                                 </div>
-                                <el-row :gutter="20" style="margin-bottom: 20px;">
-                                    <div v-for="(web,index) in webList" :key="index" class="item">
-                                        <el-col v-if="web.type==1" :span="6" :xs="12">
-                                            <el-link :href="web.url" target="_blank">
-                                                <div>
-                                                    <img style="width: 30px; height: 30px;border-radius: 100%;"
-                                                        :src="web.image">
-                                                    </img>
-                                                    <span style="margin: 5px 10px;font-size: large;">
-                                                        {{web.name}}</span>
-                                                </div>
-                                                <div>
-                                                    <span>{{ web.desc }}</span>
-                                                </div>
-                                            </el-link>
-                                        </el-col>
-                                        </el-rpw>
-                                    </div>
-                            </el-card>
-                        </el-col>
-
+                            </el-row>
+                        </el-card>
+                        <div style="height: 20px;"></div>
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>视频娱乐</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-row :gutter="20"  class="item" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index">
+                                    <el-col v-if="web.type==3" :span="4" :xs="12" class="bg" style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 10px;font-size: large;display: block;"> {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                                </div>
+                            </el-row>
+                        </el-card>
                     </div>
-                </el-main>
-                <el-footer>Footer</el-footer>
-            </el-container>
+                 
+
         </div>
+        </el-main>
+        <el-footer>Footer</el-footer>
+        </el-container>
+    </div>
 
     </div>
 
@@ -274,6 +298,14 @@
                 keywords: "",
                 webList: [
                     {
+                        name: "GitHub",
+                        url: "https://www.github.com/",
+                        image: "https://github.githubassets.com/favicons/favicon.png",
+                        desc: "全球最大程序员社区网站，开源仓库",
+                        normol: 1,
+                        type: 1
+                    },
+                    {
                         name: "链滴",
                         url: "https://www.ld246.com/",
                         image: "https://static.ld246.com/images/favicon.png",
@@ -287,7 +319,7 @@
                         image: "https://static.zhihu.com/static/favicon.ico",
                         desc: "装逼如风，常伴吾身，且看且珍惜",
                         normol: 1,
-                        type: 2
+                        type: 1
                     },
                     {
                         name: "今日热榜",
@@ -298,36 +330,76 @@
                         type: 2
                     },
                     {
+                        name: "划水摸鱼",
+                        url: "https://huashuimoyu.com/",
+                        image: "https://huashuimoyu.com/image/favicon-64.png",
+                        desc: "划水摸鱼，追踪网络热点，只关注你关心的！",
+                        normol: 1,
+                        type: 2
+                    },
+                    {
                         name: "V2EX",
                         url: "https://www.v2ex.com/",
                         image: "https://www.v2ex.com/static/img/icon_rayps_64.png",
-                        desc: "V2EX 是一个关于分享和探索的地方",
+                        desc: "程序员社区，一个关于分享和探索的地方",
                         normol: 1,
                         type: 1
                     },
                     {
-                        name: "链滴",
-                        url: "https://www.ld246.com/",
-                        image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方asfasfsaafasfasfasdas",
+                        name: "电鸭社区",
+                        url: "https://eleduck.com/",
+                        image: "https://eleduck.com/static/favicon.ico",
+                        desc: "互联网工作者们的聚集地，我们倡导“只工作，不上班”的生活方式",
                         normol: 0,
                         type: 1
                     },
                     {
-                        name: "链滴",
-                        url: "https://www.ld246.com/",
-                        image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方afasfasfasfa",
+                        name: "创造者日报",
+                        url: "https://creatorsdaily.com/",
+                        image: "https://creatorsdaily.com/android-icon-144x144.png",
+                        desc: "唯有创造才是快乐。只有创造的生灵才是生灵。",
+                        normol: 0,
+                        type: 1
+                    }, 
+                    {
+                        name: "独立开发者社区",
+                        url: "https://indiehackers.net/",
+                        image: "https://indiehackers-1251406926.cos.ap-chengdu.myqcloud.com/hackers/7cl3u.png",
+                        desc: "由众多独立开发者维护，致力于搭建和维护好国内独立开发者圈子和氛围。",
                         normol: 0,
                         type: 1
                     },
                     {
-                        name: "链滴",
-                        url: "https://www.ld246.com/",
-                        image: "https://static.ld246.com/images/favicon.png",
-                        desc: "一个记录生活的地方ssafs",
+                        name: "开源中国",
+                        url: "https://www.oschina.net/",
+                        image: "https://static.oschina.net/new-osc/img/favicon.ico",
+                        desc: "OSCHINA 社区是工信部开源软件推进联盟指定的官方社区",
                         normol: 0,
                         type: 1
+                    },
+                    {
+                        name: "CSDN",
+                        url: "https://www.csdn.net/",
+                        image: "https://csdnimg.cn/public/favicon.ico",
+                        desc: "技术资源资讯最多，抄袭也最多的社区网站",
+                        normol: 0,
+                        type: 1
+                    },
+                    {
+                        name: "人人影视",
+                        url: "https://www.yyetss.com/",
+                        image: "https://www.yyetss.com/favicon.ico",
+                        desc: "美剧网，提供最新美剧、美国电视剧、美国电影",
+                        normol: 1,
+                        type: 3
+                    },
+                    {
+                        name: "韩饭网",
+                        url: "https://www.hanfan.cc/",
+                        image: "https://www.hanfan.cc/favicon.ico",
+                        desc: "一个看韩国综艺、韩剧、娱乐新闻的网站",
+                        normol: 0,
+                        type: 3
                     }
                 ]
             },
@@ -358,6 +430,10 @@
             line-height: 60px;
         }
 
+        .bg:hover {
+            background-color: rgba(169, 187, 189, 0.205);
+        }
+
         .el-aside {
             background-color: #D3DCE6;
             color: #333;
@@ -370,6 +446,39 @@
             color: #333;
         }
 
+        .el-row {
+            margin-bottom: 20px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .el-col {
+            border-radius: 4px;
+        }
+
+        .bg-purple-dark {
+            background: #99a9bf;
+        }
+
+        .bg-purple {
+            background: #d3dce6;
+        }
+
+        .bg-purple-light {
+            background: #e5e9f2;
+        }
+
+        .grid-content {
+            border-radius: 4px;
+            min-height: 36px;
+        }
+
+        .row-bg {
+            padding: 10px 0;
+            background-color: #f9fafc;
+        }
 
 
         .el-container:nth-child(5) .el-aside,
@@ -380,8 +489,6 @@
         .el-container:nth-child(7) .el-aside {
             line-height: 320px;
         }
-    </style>
-
     </style>
 
 </html>
