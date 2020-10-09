@@ -6,8 +6,8 @@
     <title>MWSM</title>
     <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
     <meta content="hjljy" name="author">
-    <meta content="一个极简的网址导航，聚合了多种搜索引擎，收录了各种常用网站。分类合理，内容齐全" name="description">
-    <meta content="导航,网址导航,导航网站,常用网站,常用网址,程序员导航,设计导航,学习导航" name="keywords">
+    <meta content="一个极简的网址导航，收录了自己的一些常用网站。" name="description">
+    <meta content="导航,网址导航,导航网站,常用网站,常用网址,程序员导航,趣味网站" name="keywords">
     <link href="./css/index.css" rel="stylesheet">
     <link href="./image/mwsm.png" rel="shortcut icon" type="image/png">
     <link href="./image/mwsm.png" rel="apple-touch-icon">
@@ -66,18 +66,21 @@
 
                         <el-card class="box-card">
                             <div slot="header" class="clearfix">
-                                <span>常逛网站</span>
+                                <span>常用网站</span>
                                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
                             </div>
-                            <el-row :gutter="20"  class="item" style="margin-bottom: 20px;">
+                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
                                 <div v-for="(web,index) in webList" :key="index">
-                                    <el-col v-if="web.normol==1" :span="4" :xs="12" class="bg" style="min-height: 120px !important;">
-                                        <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                                    <el-col v-if="web.normol==1" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
                                             <div style="display: -webkit-box;">
                                                 <img style="width: 30px; height: 30px;border-radius: 100%;"
                                                     :src="web.image">
                                                 </img>
-                                                <span style="margin: 5px 10px;font-size: large;display: block;"> {{web.name}}</span>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
                                             </div>
                                             <div>
                                                 <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
@@ -93,15 +96,45 @@
                                 <span>社区交流</span>
                                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
                             </div>
-                            <el-row :gutter="20"  class="item" style="margin-bottom: 20px;">
+                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
                                 <div v-for="(web,index) in webList" :key="index">
-                                    <el-col v-if="web.type==1" :span="4" :xs="12" class="bg" style="min-height: 120px !important;">
-                                        <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                                    <el-col v-if="web.type==1" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
                                             <div style="display: -webkit-box;">
                                                 <img style="width: 30px; height: 30px;border-radius: 100%;"
                                                     :src="web.image">
                                                 </img>
-                                                <span style="margin: 5px 10px;font-size: large;display: block;"> {{web.name}}</span>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                                </div>
+                            </el-row>
+                        </el-card>
+                        <div style="height: 20px;"></div>
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>资讯新闻</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index">
+                                    <el-col v-if="web.type==2" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
                                             </div>
                                             <div>
                                                 <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
@@ -117,15 +150,72 @@
                                 <span>视频娱乐</span>
                                 <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
                             </div>
-                            <el-row :gutter="20"  class="item" style="margin-bottom: 20px;">
+                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
                                 <div v-for="(web,index) in webList" :key="index">
-                                    <el-col v-if="web.type==3" :span="4" :xs="12" class="bg" style="min-height: 120px !important;">
-                                        <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                                    <el-col v-if="web.type==3" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
                                             <div style="display: -webkit-box;">
                                                 <img style="width: 30px; height: 30px;border-radius: 100%;"
                                                     :src="web.image">
                                                 </img>
-                                                <span style="margin: 5px 10px;font-size: large;display: block;"> {{web.name}}</span>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                                </div>
+                            </el-row>
+                        </el-card>
+                        <div style="height: 20px;"></div>
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>工具文档</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index">
+                                    <el-col v-if="web.type==7" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                                </div>
+                            </el-row>
+                        </el-card>
+                        <div style="height: 20px;"></div>
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span>趣味网站</span>
+                                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+                            </div>
+                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+                                <div v-for="(web,index) in webList" :key="index">
+                                    <el-col v-if="web.type==9" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 30px; height: 30px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
                                             </div>
                                             <div>
                                                 <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
@@ -136,11 +226,14 @@
                             </el-row>
                         </el-card>
                     </div>
-                 
+
 
         </div>
         </el-main>
-        <el-footer>Footer</el-footer>
+        <el-footer>
+            <a href="https://www.beian.miit.gov.cn">蜀ICP备18038277号-3</a>
+           作者： <a href="https://www.hjljy.cn?utm_source=www.lsbly.com">海加尔金鹰</a>
+        </el-footer>
         </el-container>
     </div>
 
@@ -149,7 +242,16 @@
     <script src="./js/vue-router.js"></script>
     <script src="./js/axios.js"></script>
     <script src="./js/index.js"></script>
-
+    <script>
+        //百度统计JS 
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?fed8b0b77b4f17a104e463b2e3fddd7b";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
     <script>
         new Vue({
             el: "#app",
@@ -220,12 +322,12 @@
                         desc: "唯有创造才是快乐。只有创造的生灵才是生灵。",
                         normol: 0,
                         type: 1
-                    }, 
+                    },
                     {
-                        name: "独立开发者社区",
+                        name: "独立开发者",
                         url: "https://indiehackers.net/",
                         image: "https://indiehackers-1251406926.cos.ap-chengdu.myqcloud.com/hackers/7cl3u.png",
-                        desc: "由众多独立开发者维护，致力于搭建和维护好国内独立开发者圈子和氛围。",
+                        desc: "致力于搭建和维护好国内独立开发者圈子和氛围。",
                         normol: 0,
                         type: 1
                     },
@@ -238,10 +340,18 @@
                         type: 1
                     },
                     {
+                        name: "掘金",
+                        url: "https://juejin.im/",
+                        image: "https://b-gold-cdn.xitu.io/favicons/v2/favicon.ico",
+                        desc: "一个帮助开发者成长的技术文章社区",
+                        normol: 0,
+                        type: 1
+                    },
+                    {
                         name: "CSDN",
                         url: "https://www.csdn.net/",
                         image: "https://csdnimg.cn/public/favicon.ico",
-                        desc: "技术资源资讯最多，抄袭也最多的社区网站",
+                        desc: "技术资源资讯最多，抄袭也最多的技术社区网站",
                         normol: 0,
                         type: 1
                     },
@@ -260,6 +370,119 @@
                         desc: "一个看韩国综艺、韩剧、娱乐新闻的网站",
                         normol: 0,
                         type: 3
+                    },
+                    {
+                        name: "斗鱼直播",
+                        url: "https://www.douyu.com",
+                        image: "https://www.douyu.com/favicon.ico",
+                        desc: "看直播，看比赛，看游戏，看电竞",
+                        normol: 1,
+                        type: 3
+                    },
+                    {
+                        name: "优酷视频",
+                        url: "https://www.youku.com/",
+                        image: "https://img.alicdn.com/tfs/TB1WeJ9Xrj1gK0jSZFuXXcrHpXa-195-195.png",
+                        desc: "我也不知道为什么要买它的年卡",
+                        normol: 0,
+                        type: 3
+                    },
+                    {
+                        name: "36氪",
+                        url: "https://36kr.com/",
+                        image: "https://36kr.com/favicon.ico",
+                        desc: "赋能新经济参与者 让一部分人先看到未来",
+                        normol: 0,
+                        type: 2
+                    },
+                    {
+                        name: "Fake Windows",
+                        url: "https://fakeupdate.net/",
+                        image: "https://www.hjljy.cn/favicon.ico",
+                        desc: "windows虚假升级界面，xp win7 win8 win10",
+                        normol: 0,
+                        type: 9
+                    },
+                    {
+                        name: "qrbtf二维码",
+                        url: "https://qrbtf.com/",
+                        image: "https://qrbtf.com/favicon.ico",
+                        desc: "丰富参数，风格，界面二维码生成器",
+                        normol: 0,
+                        type: 9
+                    },
+                    {
+                        name: "OKTOOLS",
+                        url: "https://oktools.net/",
+                        image: "https://oktools.net/favicon.ico",
+                        desc: "JSON格式化，解密，时间戳，常用工具大全",
+                        normol: 1,
+                        type: 7
+                    },
+                    {
+                        name: "羊二小作品集",
+                        url: "https://yangerxiao.com/works",
+                        image: "https://yangerxiao.com/favicon.ico",
+                        desc: "一个前端开发，开发的众多有趣小作品",
+                        normol: 0,
+                        type: 9
+                    },
+                    {
+                        name: "必应高清壁纸",
+                        url: "https://bing.ioliu.cn/",
+                        image: "https://bing.ioliu.cn/static/images/bing.ico",
+                        desc: "国内PHP开发，每天同步必应官网的壁纸，同步抓取每日故事",
+                        normol: 0,
+                        type: 9
+                    },
+                    {
+                        name: "SpringBoot 导航",
+                        url: "http://springboot.fun/#communities",
+                        image: "https://docs.spring.io/favicon.ico",
+                        desc: "纯洁的微笑整理的一些国内SpringBoot学习，项目总结",
+                        normol: 0,
+                        type: 9
+                    },
+                    {
+                        name: "SpringBoot 文档",
+                        url: "https://docs.spring.io/spring-boot/docs/",
+                        image: "https://docs.spring.io/favicon.ico",
+                        desc: "SpringBoot官方文档地址（所有版本）",
+                        normol: 0,
+                        type: 7
+                    }
+                    ,
+                    {
+                        name: "十年之约",
+                        url: "http://www.foreverblog.cn/",
+                        image: "http://www.foreverblog.cn/favicon.ico",
+                        desc: "一个人的寂寞，一群人的狂欢。",
+                        normol: 0,
+                        type: 1
+                    },
+                    {
+                        name: "Process On",
+                        url: "https://www.processon.com/",
+                        image: "https://www.processon.com/favicon.ico",
+                        desc: "免费在线制作，实时协作流程图",
+                        normol: 0,
+                        type: 7
+                    },
+                    {
+                        name: "耐卡影音",
+                        url: "http://mcar.co/forum.php",
+                        image: "http://mcar.co/favicon.ico",
+                        desc: "美剧网站论坛，算是人人影视的一个备份吧",
+                        normol: 0,
+                        type: 3
+                    },
+                    {
+                        name: "canva可画",
+                        url: "https://www.canva.cn/",
+                        image: "https://static.canva.cn/static/images/favicon.ico",
+                        desc: "logo图标免费在线设计平台（部分收费）",
+                        normol: 0,
+                        type: 7
                     }
                 ]
             },
@@ -308,10 +531,6 @@
 
         .el-row {
             margin-bottom: 20px;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
         }
 
         .el-col {
@@ -351,10 +570,4 @@
         }
     </style>
 
-<<<<<<< HEAD
 </html>
-=======
-    </style>
-
-</html>
->>>>>>> dbc5a571e1adab0c2bb9ff9fbd4d67cfe0e50b34
