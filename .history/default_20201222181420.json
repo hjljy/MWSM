@@ -186,14 +186,6 @@ json =[
         type: 7
     },
     {
-        name: "摹客",
-        url: "https://www.mockplus.cn/",
-        image: "https://www.mockplus.cn/favicon.ico",
-        desc: "摹客创造设计动力",
-        normol: 0,
-        type: 7
-    },
-    {
         name: "canva可画",
         url: "https://www.canva.cn/",
         image: "https://static.canva.cn/static/images/favicon.ico",

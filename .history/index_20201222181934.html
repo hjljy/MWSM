@@ -82,24 +82,24 @@
                                 <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
                             </div>
                             <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.normol==1" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
+                                
+                                    <el-col v-for="(web,index) in webList" :key="index" v-if="web.normol==1" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 25px; height: 25px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                            
                             </el-row>
                         </el-card>
                         <div style="height: 20px;"></div>
@@ -136,24 +136,24 @@
                                 <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
                             </div>
                             <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==2" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
+                                
+                                    <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==2" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 25px; height: 25px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                            
                             </el-row>
                         </el-card>
                         <div style="height: 20px;"></div>
@@ -163,24 +163,24 @@
                                 <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
                             </div>
                             <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==3" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
+                               
+                                    <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==3" :span="4" :xs="12" class="bg"
+                                        style="min-height: 120px !important;">
+                                        <el-link :href="web.url" target="_blank"
+                                            style="padding: 12px;text-decoration : none">
+                                            <div style="display: -webkit-box;">
+                                                <img style="width: 25px; height: 25px;border-radius: 100%;"
+                                                    :src="web.image">
+                                                </img>
+                                                <span style="margin: 5px 5px;font-size: large;display: block;">
+                                                    {{web.name}}</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                                            </div>
+                                        </el-link>
+                                    </el-col>
+                            
                             </el-row>
                         </el-card>
                         <div style="height: 20px;"></div>

@@ -169,27 +169,12 @@ json =[
         normol: 1,
         type: 7
     },
-    {
-        name: "element-ui",
-        url: "https://element.eleme.cn/#/zh-CN",
-        image: "https://element.eleme.cn/favicon.ico",
-        desc: "element-ui网站快速成型工具",
-        normol: 1,
-        type: 7
-    },
+    
     {
         name: "SpringBoot文档",
         url: "https://docs.spring.io/spring-boot/docs/",
         image: "https://docs.spring.io/favicon.ico",
         desc: "SpringBoot官方文档地址（所有版本）",
-        normol: 0,
-        type: 7
-    },
-    {
-        name: "摹客",
-        url: "https://www.mockplus.cn/",
-        image: "https://www.mockplus.cn/favicon.ico",
-        desc: "摹客创造设计动力",
         normol: 0,
         type: 7
     },
