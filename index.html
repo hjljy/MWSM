@@ -2,352 +2,335 @@
 <html lang="zh-CN">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>MWSM</title>
-    <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
-    <meta content="hjljy" name="author">
-    <meta content="一个极简的网址导航，收录了自己的一些常用网站。" name="description">
-    <meta content="导航,网址导航,导航网站,常用网站,常用网址,程序员导航,趣味网站" name="keywords">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link href="./image/mwsm.png" rel="shortcut icon" type="image/png">
-    <link href="./image/mwsm.png" rel="apple-touch-icon">
-    <!--百度统计JS-->
-    <script>
-
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?fed8b0b77b4f17a104e463b2e3fddd7b";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>MWSM</title>
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1" name="viewport">
+  <meta content="hjljy" name="author">
+  <meta content="一个极简的网址导航，收录了自己的一些常用网站。" name="description">
+  <meta content="导航,网址导航,导航网站,常用网站,常用网址,程序员导航,趣味网站" name="keywords">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link href="./image/mwsm.png" rel="shortcut icon" type="image/png">
+  <link href="./image/mwsm.png" rel="apple-touch-icon">
+  <!--百度统计JS-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?fed8b0b77b4f17a104e463b2e3fddd7b";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 </head>
 
 <body style="background-color:#f1f4ff;;">
 
-    <div id="app" v-cloak>
-        <div>
-            <el-container>
-                <el-main>
-                    <div style="margin: 0 auto;
-                    position: relative;">
+  <div id="app" v-cloak>
+    <template>
+      <el-container>
+        <el-main>
+          <div style="margin: 0 auto;
+                      position: relative;">
 
-                        <div style="text-align: right;">
-                            <img src="./image/mwsm.png" alt="my web sitemap" style="height: 40px;">
-                        </div>
+            <div style="text-align: right;">
+              <img src="./image/mwsm.png" alt="my web sitemap" style="height: 40px;">
+            </div>
 
+          </div>
+          <div>
+            <el-tabs v-model="activeName" style="max-width: 1200px;margin: 0 auto;">
+              <el-tab-pane label="百度" name="first">
+                <el-input placeholder="百度一下，你就知道" v-model="keywords" border-radius="0px">
+                  <el-button slot="append" icon="el-icon-search" @click="searchWords('1')">
+                  </el-button>
+                </el-input>
+              </el-tab-pane>
+              <el-tab-pane label="必应" name="second">
+                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
+                  <el-button slot="append" icon="el-icon-search" @click="searchWords(2)"></el-button>
+                </el-input>
+              </el-tab-pane>
+              <el-tab-pane label="图片" name="third">
+                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
+                  <el-button slot="append" icon="el-icon-search" @click="searchWords(3)"></el-button>
+                </el-input>
+              </el-tab-pane>
+
+              <el-tab-pane label="翻译" name="fourth">
+                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
+                  <el-button slot="append" icon="el-icon-search" @click="searchWords(4)"></el-button>
+                </el-input>
+              </el-tab-pane>
+              <el-tab-pane label="地图" name="five">
+                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
+                  <el-button slot="append" icon="el-icon-search" @click="searchWords(5)"></el-button>
+                </el-input>
+              </el-tab-pane>
+            </el-tabs>
+          </div>
+
+          <div style="max-width: 1200px;margin-top: 20px;margin-bottom: 0px;margin-left: auto;margin-right: auto;">
+
+
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>常用网站</span>
+                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+              </div>
+              <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+
+                <el-col v-for="(web,index) in webList" :key="index" v-if="web.normol==1" :span="4" :xs="12" class="bg"
+                  style="min-height: 120px !important;">
+                  <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                    <div style="display: -webkit-box;">
+                      <img style="width: 25px; height: 25px;border-radius: 100%;" :src="web.image">
+                      </img>
+                      <span style="margin: 5px 5px;font-size: large;display: block;">
+                        {{web.name}}</span>
                     </div>
                     <div>
-                        <el-tabs v-model="activeName" style="max-width: 1200px;margin: 0 auto;">
-                            <el-tab-pane label="百度" name="first">
-                                <el-input placeholder="百度一下，你就知道" v-model="keywords" border-radius="0px">
-                                    <el-button slot="append" icon="el-icon-search" @click="searchWords('1')">
-                                    </el-button>
-                                </el-input>
-                            </el-tab-pane>
-                            <el-tab-pane label="必应" name="second">
-                                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
-                                    <el-button slot="append" icon="el-icon-search" @click="searchWords(2)"></el-button>
-                                </el-input>
-                            </el-tab-pane>
-                            <el-tab-pane label="图片" name="third">
-                                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
-                                    <el-button slot="append" icon="el-icon-search" @click="searchWords(3)"></el-button>
-                                </el-input>
-                            </el-tab-pane>
-
-                            <el-tab-pane label="翻译" name="fourth">
-                                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
-                                    <el-button slot="append" icon="el-icon-search" @click="searchWords(4)"></el-button>
-                                </el-input>
-                            </el-tab-pane>
-                            <el-tab-pane label="地图" name="five">
-                                <el-input placeholder="微软Bing搜索" v-model="keywords" border-radius="0px">
-                                    <el-button slot="append" icon="el-icon-search" @click="searchWords(5)"></el-button>
-                                </el-input>
-                            </el-tab-pane>
-                        </el-tabs>
+                      <span style="font-size: small;min-height: 40px;"> {{web.desc}}</span>
                     </div>
+                  </el-link>
+                </el-col>
 
-                    <div
-                        style="max-width: 1200px;margin-top: 20px;margin-bottom: 0px;margin-left: auto;margin-right: auto;">
+              </el-row>
+            </el-card>
+            <div style="height: 20px;"></div>
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>社区交流</span>
+                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+              </div>
+              <el-row :gutter="20" style="margin-bottom: 20px;">
 
-
-                        <el-card class="box-card">
-                            <div slot="header" class="clearfix">
-                                <span>常用网站</span>
-                                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-                            </div>
-                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.normol==1" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
-                            </el-row>
-                        </el-card>
-                        <div style="height: 20px;"></div>
-                        <el-card class="box-card">
-                            <div slot="header" class="clearfix">
-                                <span>社区交流</span>
-                                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-                            </div>
-                            <el-row :gutter="20" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==1" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
-                            </el-row>
-                        </el-card>
-                        <div style="height: 20px;"></div>
-                        <el-card class="box-card">
-                            <div slot="header" class="clearfix">
-                                <span>资讯新闻</span>
-                                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-                            </div>
-                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==2" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
-                            </el-row>
-                        </el-card>
-                        <div style="height: 20px;"></div>
-                        <el-card class="box-card">
-                            <div slot="header" class="clearfix">
-                                <span>视频娱乐</span>
-                                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-                            </div>
-                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==3" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
-                            </el-row>
-                        </el-card>
-                        <div style="height: 20px;"></div>
-                        <el-card class="box-card">
-                            <div slot="header" class="clearfix">
-                                <span>工具文档</span>
-                                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-                            </div>
-                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==7" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
-                            </el-row>
-                        </el-card>
-                        <div style="height: 20px;"></div>
-                        <el-card class="box-card">
-                            <div slot="header" class="clearfix">
-                                <span>趣味网站</span>
-                                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-                            </div>
-                            <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
-
-                                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==9" :span="4"
-                                    :xs="12" class="bg" style="min-height: 120px !important;">
-                                    <el-link :href="web.url" target="_blank"
-                                        style="padding: 12px;text-decoration : none">
-                                        <div style="display: -webkit-box;">
-                                            <img style="width: 25px; height: 25px;border-radius: 100%;"
-                                                :src="web.image">
-                                            </img>
-                                            <span style="margin: 5px 5px;font-size: large;display: block;">
-                                                {{web.name}}</span>
-                                        </div>
-                                        <div>
-                                            <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
-                                        </div>
-                                    </el-link>
-                                </el-col>
-
-                            </el-row>
-                        </el-card>
+                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==1" :span="4" :xs="12" class="bg"
+                  style="min-height: 120px !important;">
+                  <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                    <div style="display: -webkit-box;">
+                      <img style="width: 25px; height: 25px;border-radius: 100%;" :src="web.image">
+                      </img>
+                      <span style="margin: 5px 5px;font-size: large;display: block;">
+                        {{web.name}}</span>
                     </div>
+                    <div>
+                      <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                    </div>
+                  </el-link>
+                </el-col>
 
+              </el-row>
+            </el-card>
+            <div style="height: 20px;"></div>
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>资讯新闻</span>
+                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+              </div>
+              <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
 
-        </div>
+                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==2" :span="4" :xs="12" class="bg"
+                  style="min-height: 120px !important;">
+                  <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                    <div style="display: -webkit-box;">
+                      <img style="width: 25px; height: 25px;border-radius: 100%;" :src="web.image">
+                      </img>
+                      <span style="margin: 5px 5px;font-size: large;display: block;">
+                        {{web.name}}</span>
+                    </div>
+                    <div>
+                      <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                    </div>
+                  </el-link>
+                </el-col>
+
+              </el-row>
+            </el-card>
+            <div style="height: 20px;"></div>
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>视频娱乐</span>
+                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+              </div>
+              <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+
+                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==3" :span="4" :xs="12" class="bg"
+                  style="min-height: 120px !important;">
+                  <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                    <div style="display: -webkit-box;">
+                      <img style="width: 25px; height: 25px;border-radius: 100%;" :src="web.image">
+                      </img>
+                      <span style="margin: 5px 5px;font-size: large;display: block;">
+                        {{web.name}}</span>
+                    </div>
+                    <div>
+                      <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                    </div>
+                  </el-link>
+                </el-col>
+
+              </el-row>
+            </el-card>
+            <div style="height: 20px;"></div>
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>工具文档</span>
+                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+              </div>
+              <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+
+                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==7" :span="4" :xs="12" class="bg"
+                  style="min-height: 120px !important;">
+                  <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                    <div style="display: -webkit-box;">
+                      <img style="width: 25px; height: 25px;border-radius: 100%;" :src="web.image">
+                      </img>
+                      <span style="margin: 5px 5px;font-size: large;display: block;">
+                        {{web.name}}</span>
+                    </div>
+                    <div>
+                      <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                    </div>
+                  </el-link>
+                </el-col>
+
+              </el-row>
+            </el-card>
+            <div style="height: 20px;"></div>
+            <el-card class="box-card">
+              <div slot="header" class="clearfix">
+                <span>趣味网站</span>
+                <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
+              </div>
+              <el-row :gutter="20" class="item" style="margin-bottom: 20px;">
+
+                <el-col v-for="(web,index) in webList" :key="index" v-if="web.type==9" :span="4" :xs="12" class="bg"
+                  style="min-height: 120px !important;">
+                  <el-link :href="web.url" target="_blank" style="padding: 12px;text-decoration : none">
+                    <div style="display: -webkit-box;">
+                      <img style="width: 25px; height: 25px;border-radius: 100%;" :src="web.image">
+                      </img>
+                      <span style="margin: 5px 5px;font-size: large;display: block;">
+                        {{web.name}}</span>
+                    </div>
+                    <div>
+                      <span style="font-size: small;min-height: 40px;">{{ web.desc }}</span>
+                    </div>
+                  </el-link>
+                </el-col>
+              </el-row>
+            </el-card>
+          </div>
         </el-main>
         <el-footer>
-            <a href="https://www.beian.miit.gov.cn">蜀ICP备18038277号-3</a>
-            作者： <a href="https://www.hjljy.cn?utm_source=www.lsbly.com">海加尔金鹰</a>
+          <a href="https://www.beian.miit.gov.cn">蜀ICP备18038277号-3</a>
+          作者： <a href="https://www.hjljy.cn?utm_source=www.lsbly.com">海加尔金鹰</a>
         </el-footer>
-        </el-container>
-    </div>
+      </el-container>
+    </template>
+  </div>
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script type="text/javascript" src="default.json"></script>
-    <script>
-        var Index = new Vue({
-            el: "#app",
-            data: {
-                activeName: "first",
-                keywords: "",
-                webList: json
-            },
-            methods: {
-                searchWords(type) {
-                    var jQuery = new XMLHttpRequest();
-                    if (type == 1) {
-                        window.open("https://www.baidu.com/s?wd=" + this.keywords)
-                    } if (type == 2) {
-                        window.open("https://cn.bing.com/search?q=" + this.keywords)
-                    } if (type == 3) {
-                        window.open("https://cn.bing.com/images/search?q=" + this.keywords)
-                    } if (type == 4) {
-                        window.open("https://cn.bing.com/dict/search?q=" + this.keywords)
-                    } if (type == 5) {
-                        window.open("https://cn.bing.com/maps?q=" + this.keywords)
-                    }
-                }
-            }
-        })
 
-    </script>
-    <style>
-        .el-header,
-        .el-footer {
-            background-color: #B3C0D1;
-            color: #333;
-            text-align: center;
-            line-height: 60px;
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script type="text/javascript" src="default.json"></script>
+  <script>
+    var Index = new Vue({
+      el: "#app",
+      data: {
+        activeName: "first",
+        keywords: "",
+        webList: json
+      },
+      methods: {
+        searchWords(type) {
+          var jQuery = new XMLHttpRequest();
+          if (type == 1) {
+            window.open("https://www.baidu.com/s?wd=" + this.keywords)
+          } if (type == 2) {
+            window.open("https://cn.bing.com/search?q=" + this.keywords)
+          } if (type == 3) {
+            window.open("https://cn.bing.com/images/search?q=" + this.keywords)
+          } if (type == 4) {
+            window.open("https://cn.bing.com/dict/search?q=" + this.keywords)
+          } if (type == 5) {
+            window.open("https://cn.bing.com/maps?q=" + this.keywords)
+          }
         }
+      }
+    })
 
-        .bg:hover {
-            background-color: rgba(169, 187, 189, 0.205);
-        }
+  </script>
+  <style>
+    .el-header,
+    .el-footer {
+      background-color: #B3C0D1;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+    }
 
-        .el-aside {
-            background-color: #D3DCE6;
-            color: #333;
-            text-align: center;
-            line-height: 200px;
-        }
+    .bg:hover {
+      background-color: rgba(169, 187, 189, 0.205);
+    }
 
-        .el-main {
-            background-color: #E9EEF3;
-            color: #333;
-        }
+    .el-aside {
+      background-color: #D3DCE6;
+      color: #333;
+      text-align: center;
+      line-height: 200px;
+    }
 
-        .el-row {
-            margin-bottom: 20px;
-        }
+    .el-main {
+      background-color: #E9EEF3;
+      color: #333;
+    }
 
-        .el-col {
-            border-radius: 4px;
-        }
+    .el-row {
+      margin-bottom: 20px;
+    }
 
-        .bg-purple-dark {
-            background: #99a9bf;
-        }
+    .el-col {
+      border-radius: 4px;
+    }
 
-        .bg-purple {
-            background: #d3dce6;
-        }
+    .bg-purple-dark {
+      background: #99a9bf;
+    }
 
-        .bg-purple-light {
-            background: #e5e9f2;
-        }
+    .bg-purple {
+      background: #d3dce6;
+    }
 
-        .grid-content {
-            border-radius: 4px;
-            min-height: 36px;
-        }
+    .bg-purple-light {
+      background: #e5e9f2;
+    }
 
-        .row-bg {
-            padding: 10px 0;
-            background-color: #f9fafc;
-        }
+    .grid-content {
+      border-radius: 4px;
+      min-height: 36px;
+    }
+
+    .row-bg {
+      padding: 10px 0;
+      background-color: #f9fafc;
+    }
 
 
-        .el-container:nth-child(5) .el-aside,
-        .el-container:nth-child(6) .el-aside {
-            line-height: 260px;
-        }
+    .el-container:nth-child(5) .el-aside,
+    .el-container:nth-child(6) .el-aside {
+      line-height: 260px;
+    }
 
-        .el-container:nth-child(7) .el-aside {
-            line-height: 320px;
-        }
-        [v-cloak]{
-            display: none;
-        }
-    </style>
+    .el-container:nth-child(7) .el-aside {
+      line-height: 320px;
+    }
+
+    [v-cloak] {
+      display: none;
+    }
+  </style>
 
 </html>
